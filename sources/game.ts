@@ -20,30 +20,6 @@ const canvas = ((c) => {
 })(document.createElement('canvas'))
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
 
-let stage = 1
-let penalty = 1
-let ballRadius = 10
-let x = canvas.width / 2
-let y = canvas.height - ballRadius * 3
-let dx = 2
-let dy = -2
-let paddleHeight = 10
-let paddleWidth = 75
-let paddleX = (canvas.width - paddleWidth) / 2
-let rightPressed = false
-let leftPressed = false
-let brickRowCount = 3
-let brickColumnCount = 1
-let brickWidth!: number
-let brickHeight = 20
-let brickPadding = 10
-let brickOffsetTop = 30
-let brickOffsetLeft = 30
-let score = 0
-let lives = 3
-let pause: boolean | string = true
-let end: boolean | string = false
-
 interface StageInfo {
   brickRowCount: number
   brickColumnCount: number
@@ -59,16 +35,16 @@ const stages: Stages = {
     brickColumnCount: 1,
   },
   2: {
-    brickRowCount: 3,
-    brickColumnCount: 2,
+    brickRowCount: 4,
+    brickColumnCount: 1,
   },
   3: {
     brickRowCount: 4,
     brickColumnCount: 2,
   },
   4: {
-    brickRowCount: 4,
-    brickColumnCount: 3,
+    brickRowCount: 5,
+    brickColumnCount: 2,
   },
   5: {
     brickRowCount: 5,
@@ -76,7 +52,28 @@ const stages: Stages = {
   },
 }
 
-canvas.width
+let stage = 1
+let penalty = 1
+let ballRadius = 10
+let x = canvas.width / 2
+let y = canvas.height - ballRadius * 3
+let dx = 2
+let dy = -2
+let paddleHeight = 10
+let paddleWidth = 75
+let paddleX = (canvas.width - paddleWidth) / 2
+let rightPressed = false
+let leftPressed = false
+let { brickRowCount, brickColumnCount } = stages[stage]
+let brickWidth!: number
+let brickHeight = 20
+let brickPadding = 10
+let brickOffsetTop = 30
+let brickOffsetLeft = 30
+let score = 0
+let lives = 3
+let pause: boolean | string = true
+let end: boolean | string = false
 
 const STATUS_ON = 10
 
@@ -122,10 +119,27 @@ function togglePauseHandler(): void {
   draw()
 }
 
-document.addEventListener('keydown', keyDownHandler, false)
-document.addEventListener('keyup', keyUpHandler, false)
-document.addEventListener('mousemove', mouseMoveHandler, false)
-document.addEventListener('click', togglePauseHandler, false)
+interface EventMap {
+  keydown: EventListenerOrEventListenerObject
+  keyup: EventListenerOrEventListenerObject
+  mousemove: EventListenerOrEventListenerObject
+  click: EventListenerOrEventListenerObject
+}
+
+const EventMap: EventMap = {
+  keydown: keyDownHandler as EventListenerOrEventListenerObject,
+  keyup: keyUpHandler as EventListenerOrEventListenerObject,
+  mousemove: mouseMoveHandler as EventListenerOrEventListenerObject,
+  click: togglePauseHandler,
+}
+;(Object.keys(EventMap) as Array<keyof EventMap>).forEach((eventName) =>
+  document.addEventListener(eventName, EventMap?.[eventName], false),
+)
+
+// document.addEventListener('keydown', keyDownHandler, false)
+// document.addEventListener('keyup', keyUpHandler, false)
+// document.addEventListener('mousemove', mouseMoveHandler, false)
+// document.addEventListener('click', togglePauseHandler, false)
 
 function calculateState(): void {
   pause = `[${stage}판]을 깼습니다!`
@@ -204,7 +218,7 @@ function drawSystemInfo(): void {
   ctx.fillStyle = COLOR
   ctx.textAlign = ALIGN_START
   ctx.fillText(
-    `[${stage}판] ${score.toLocaleString('en')} / ●${lives}`,
+    `[${stage}판] ${score.toLocaleString('en')}점 / ●${lives}`,
     ballRadius,
     20,
   )
