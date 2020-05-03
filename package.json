@@ -1,0 +1,43 @@
+{
+  "name": "break-bricks",
+  "version": "1.0.0",
+  "description": "TypeScript MDN Game Dev Tutorial.",
+  "scripts": {
+    "dev": "parcel sources/index.html -p 8080",
+    "prebuild": "ts-node scripts/prebuild.ts",
+    "build": "parcel build sources/index.html --public-url /break-bricks"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oshx/break-bricks.git"
+  },
+  "keywords": [
+    "break",
+    "bricks",
+    "game"
+  ],
+  "author": {
+    "name": "오승환",
+    "email": "oshxios@gmail.com"
+  },
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/oshx/break-bricks/issues"
+  },
+  "config": {
+    "ssh": "ssh://git@github.com/oshx/break-bricks.git",
+    "remote": "origin",
+    "branch": "gh-pages"
+  },
+  "homepage": "https://github.com/oshx/break-bricks#readme",
+  "devDependencies": {
+    "@types/rimraf": "^3.0.0",
+    "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.4",
+    "rimraf": "^3.0.2",
+    "sass": "^1.26.5",
+    "simple-git": "^2.2.0",
+    "ts-node": "^8.10.0",
+    "typescript": "^3.8.3"
+  }
+}

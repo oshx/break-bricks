@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "CommonJS",
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "esModuleInterop": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2015",
+      "ES2016",
+      "ES2017",
+      "ES2018",
+      "ES2019",
+      "ES2020",
+      "ESNext",
+      "ScriptHost",
+      "WebWorker"
+    ],
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./sources/*"]
+    },
+    "moduleResolution": "Node",
+    "outDir": "dist"
+  },
+  "include": ["./sources/*.ts", "sources/app.ts.bak"],
+  "exclude": ["./node_modules"]
+}
