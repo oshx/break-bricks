@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "parcel sources/index.html -p 8080",
     "prebuild": "ts-node scripts/prebuild.ts",
-    "build": "parcel build sources/index.html --public-url /break-bricks"
+    "build": "parcel build sources/index.html --public-url /break-bricks",
+    "postbuild": "ts-node scripts/postbuild.ts"
   },
   "repository": {
     "type": "git",
@@ -31,12 +32,13 @@
   },
   "homepage": "https://github.com/oshx/break-bricks#readme",
   "devDependencies": {
+    "@types/node": "^13.13.4",
     "@types/rimraf": "^3.0.0",
     "parcel": "^1.12.4",
     "parcel-bundler": "^1.12.4",
     "rimraf": "^3.0.2",
     "sass": "^1.26.5",
-    "simple-git": "^2.2.0",
+    "simple-git": "^2.3.0",
     "ts-node": "^8.10.0",
     "typescript": "^3.8.3"
   }

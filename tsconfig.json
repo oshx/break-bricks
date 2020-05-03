@@ -18,7 +18,12 @@
       "ScriptHost",
       "WebWorker"
     ],
+    "noErrorTruncation": true,
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true,
+    "sourceMap": false,
     "strict": true,
+    "allowJs": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./sources/*"]
@@ -27,5 +32,5 @@
     "outDir": "dist"
   },
   "include": ["./sources/*.ts", "sources/app.ts.bak"],
-  "exclude": ["./node_modules"]
+  "exclude": ["node_modules", "simple-git"]
 }
