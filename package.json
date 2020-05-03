@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "parcel sources/index.html -p 8080",
     "prebuild": "ts-node scripts/prebuild.ts",
-    "build": "parcel build sources/index.html --public-url /break-bricks",
+    "build": "NODE_ENV=production parcel build sources/index.html --no-source-maps --public-url /break-bricks",
     "postbuild": "ts-node scripts/postbuild.ts"
   },
   "repository": {
