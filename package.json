@@ -38,7 +38,7 @@
     "parcel-bundler": "^1.12.4",
     "rimraf": "^3.0.2",
     "sass": "^1.26.5",
-    "simple-git": "^2.3.0",
+    "simple-git": "^3.16.0",
     "ts-node": "^8.10.0",
     "typescript": "^3.8.3"
   }
